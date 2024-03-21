@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket</title>
+    <style>
+        .final---ticket-email {
+            width: 100%;
+            max-width: 600px;
+            grid-column-gap: 10px;
+            grid-row-gap: 10px;
+            background-color: #fff;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding: 10px;
+            display: flex;
+        }
+
+        .header {
+            width: 100%;
+            grid-column-gap: 10px;
+            grid-row-gap: 10px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            display: flex;
+        }
+
+        .vectors-wrapper {
+            height: 87px;
+            grid-column-gap: 0px;
+            grid-row-gap: 0px;
+            object-fit: cover;
+            flex: 0 auto;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+
+        .row_content {
+            width: 100%;
+            grid-column-gap: 10px;
+            grid-row-gap: 10px;
+            justify-content: center;
+            align-items: center;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            display: flex;
+        }
+
+        .hi-customer-name-this-email-contains-your-ticket {
+            color: #000;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 400;
+        }
+
+        .ticket {
+            width: 100%;
+            max-width: 580px;
+            grid-column-gap: 10px;
+            grid-row-gap: 10px;
+            background-color: #fff;
+            border: .5px solid #000;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding: 20px;
+            display: flex;
+        }
+
+        .frame-7 {
+            width: 100%;
+            grid-column-gap: 20px;
+            grid-row-gap: 20px;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            display: flex;
+        }
+
+        .frame-6 {
+            width: 100%;
+            grid-column-gap: 10px;
+            grid-row-gap: 10px;
+            justify-content: flex-start;
+            align-items: flex-start;
+            display: flex;
+        }
+
+        .text {
+            color: #000;
+            text-align: center;
+            font-family: Montserrat, sans-serif;
+            font-size: 32px;
+            font-weight: 600;
+        }
+
+        .show-details {
+            width: 100%;
+            grid-column-gap: 0px;
+            grid-row-gap: 0px;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            display: flex;
+        }
+
+        .column {
+            width: 100%;
+            grid-column-gap: 10px;
+            grid-row-gap: 10px;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            display: flex;
+        }
+
+        .body-large {
+            color: #000;
+            font-family: Montserrat, sans-serif;
+            font-size: 18px;
+            font-weight: 400;
+        }
+
+        .body {
+            color: #000;
+            font-family: Montserrat, sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+        }
+
+        .frame-9 {
+            grid-column-gap: 10px;
+            grid-row-gap: 10px;
+            flex: 0 auto;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            display: flex;
+        }
+
+        .frame-5 {
+            grid-column-gap: 10px;
+            grid-row-gap: 10px;
+            flex: 0 auto;
+            justify-content: flex-start;
+            align-items: flex-start;
+            display: flex;
+        }
+
+        .body-bold {
+            color: #000;
+            text-align: center;
+            font-family: Montserrat, sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .body-2 {
+            color: #000;
+            text-align: center;
+            font-family: Montserrat, sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+        }
+
+        .frame-8 {
+            grid-column-gap: 20px;
+            grid-row-gap: 20px;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-end;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            display: flex;
+        }
+
+        .vectors-wrapper-2 {
+            width: 150px;
+            height: 150px;
+            grid-column-gap: 0px;
+            grid-row-gap: 0px;
+            object-fit: cover;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+
+        .vectors-wrapper-3 {
+            width: 100px;
+            height: 34.3874px;
+            grid-column-gap: 0px;
+            grid-row-gap: 0px;
+            object-fit: cover;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+
+        .row_content-2 {
+            width: 100%;
+            grid-column-gap: 10px;
+            grid-row-gap: 10px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-top: 40px;
+            padding-bottom: 40px;
+            display: flex;
+        }
+
+        @media screen and (max-width: 767px) {
+
+            .header,
+            .row_content {
+                display: none;
+            }
+
+            .ticket {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .frame-7 {
+                align-items: center;
+            }
+
+            .frame-6 {
+                justify-content: center;
+            }
+
+            .column {
+                align-items: center;
+            }
+
+            .frame-9 {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .frame-8 {
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="final---ticket-email">
+        <div class="header"><img
+                src="https://uploads-ssl.webflow.com/64e4788e77b1c2da839c93b4/64e4794eabd633d142754ad3_Vectors-Wrapper.svg"
+                loading="lazy" width="253" height="87" alt="" class="vectors-wrapper"></div>
+        <div class="row_content">
+            <div class="hi-customer-name-this-email-contains-your-ticket">
+                <div
+                    class="hi-customer-name-this-email-contains-your-ticket hi-customer-name-this-email-contains-your-ticket">
+                    <span class="body-2">Hi, </span><span class="body-bold">{Customer Name}
+                    </span><span class="body-2">This email contains your ticket.</span></div>
+            </div>
+        </div>
+        <div class="ticket">
+            <div class="frame-7">
+                <div class="frame-6">
+                    <div class="text">{Show Title One}</div>
+                </div>
+                <div class="show-details">
+                    <div class="column">
+                        <div class="body-large">{Show date}</div>
+                        <div class="body-large">{Doors Open: 8:00pm}</div>
+                        <div class="body-large">{Venue}</div>
+                        <div class="body">{Address}</div>
+                    </div>
+                </div>
+                <div class="frame-9">
+                    <div class="frame-5">
+                        <div class="body-bold">Order Id:</div>
+                        <div class="body-2">{Order id}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="frame-8"><img
+                    src="{QR code src}"
+                    loading="lazy" width="150" height="150" alt="" class="vectors-wrapper-2"><img
+                    src="https://uploads-ssl.webflow.com/64e4788e77b1c2da839c93b4/64e47950f4df78fd5efe0a4d_Vectors-Wrapper.svg"
+                    loading="lazy" width="100" height="34.387351989746094" alt="" class="vectors-wrapper-3"></div>
+        </div>
+        <div class="row_content-2">
+            <div class="body-2">Any questions about your order please email; breakneckcomedy@live.co.uk</div>
+        </div>
+    </div>
+</body>
+
+</html>
