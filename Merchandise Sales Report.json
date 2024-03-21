@@ -1,0 +1,1886 @@
+{
+    "name": "Merchandise Sales Report",
+    "flow": [
+        {
+            "id": 1,
+            "module": "webflow:watchSites",
+            "version": 1,
+            "parameters": {
+                "__IMTHOOK__": 68953
+            },
+            "mapper": {},
+            "metadata": {
+                "designer": {
+                    "x": 0,
+                    "y": 0
+                },
+                "restore": {
+                    "parameters": {
+                        "__IMTHOOK__": {
+                            "data": {
+                                "editable": "false"
+                            },
+                            "label": "Merchandise Sales Report webhook"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTHOOK__",
+                        "type": "hook:webflow",
+                        "label": "Webhook",
+                        "required": true
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "orderId",
+                        "type": "text",
+                        "label": "Order ID"
+                    },
+                    {
+                        "name": "status",
+                        "type": "text",
+                        "label": "Status"
+                    },
+                    {
+                        "name": "comment",
+                        "type": "text",
+                        "label": "Comment"
+                    },
+                    {
+                        "name": "orderComment",
+                        "type": "text",
+                        "label": "Order Comment"
+                    },
+                    {
+                        "name": "acceptedOn",
+                        "type": "date",
+                        "label": "Accepted On"
+                    },
+                    {
+                        "name": "disputedOn",
+                        "type": "date",
+                        "label": "Disputed On"
+                    },
+                    {
+                        "name": "disputeUpdatedOn",
+                        "type": "date",
+                        "label": "Dispute Updated On"
+                    },
+                    {
+                        "name": "disputeLastStatus",
+                        "type": "text",
+                        "label": "Dispute Last Status"
+                    },
+                    {
+                        "name": "fulfilledOn",
+                        "type": "date",
+                        "label": "Fulfilled On"
+                    },
+                    {
+                        "name": "refundedOn",
+                        "type": "date",
+                        "label": "Refunded On"
+                    },
+                    {
+                        "name": "customerPaid",
+                        "spec": [
+                            {
+                                "name": "unit",
+                                "type": "text",
+                                "label": "Unit"
+                            },
+                            {
+                                "name": "value",
+                                "type": "number",
+                                "label": "Value"
+                            },
+                            {
+                                "name": "string",
+                                "type": "text",
+                                "label": "String"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Customer Paid"
+                    },
+                    {
+                        "name": "netAmount",
+                        "spec": [
+                            {
+                                "name": "unit",
+                                "type": "text",
+                                "label": "Unit"
+                            },
+                            {
+                                "name": "value",
+                                "type": "number",
+                                "label": "Value"
+                            },
+                            {
+                                "name": "string",
+                                "type": "text",
+                                "label": "String"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Net Amount"
+                    },
+                    {
+                        "name": "shippingProvider",
+                        "type": "text",
+                        "label": "Shipping Provider"
+                    },
+                    {
+                        "name": "shippingTracking",
+                        "type": "text",
+                        "label": "Shipping Tracking"
+                    },
+                    {
+                        "name": "customerInfo",
+                        "spec": [
+                            {
+                                "name": "fullName",
+                                "type": "text",
+                                "label": "Full Name"
+                            },
+                            {
+                                "name": "email",
+                                "type": "text",
+                                "label": "Email"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Customer Info"
+                    },
+                    {
+                        "name": "allAddresses",
+                        "spec": {
+                            "spec": [
+                                {
+                                    "name": "type",
+                                    "type": "text",
+                                    "label": "Type"
+                                },
+                                {
+                                    "name": "addressee",
+                                    "type": "text",
+                                    "label": "Addressee"
+                                },
+                                {
+                                    "name": "line1",
+                                    "type": "text",
+                                    "label": "Line 1"
+                                },
+                                {
+                                    "name": "line2",
+                                    "type": "text",
+                                    "label": "Line 2"
+                                },
+                                {
+                                    "name": "city",
+                                    "type": "text",
+                                    "label": "City"
+                                },
+                                {
+                                    "name": "state",
+                                    "type": "text",
+                                    "label": "State"
+                                },
+                                {
+                                    "name": "country",
+                                    "type": "text",
+                                    "label": "Country"
+                                },
+                                {
+                                    "name": "postalCode",
+                                    "type": "text",
+                                    "label": "Postal Code"
+                                }
+                            ],
+                            "type": "collection"
+                        },
+                        "type": "array",
+                        "label": "All Addresses"
+                    },
+                    {
+                        "name": "purchasedItems",
+                        "spec": {
+                            "spec": [
+                                {
+                                    "name": "count",
+                                    "type": "number",
+                                    "label": "Count"
+                                },
+                                {
+                                    "name": "rowTotal",
+                                    "spec": [
+                                        {
+                                            "name": "unit",
+                                            "type": "text",
+                                            "label": "Unit"
+                                        },
+                                        {
+                                            "name": "value",
+                                            "type": "number",
+                                            "label": "Value"
+                                        },
+                                        {
+                                            "name": "string",
+                                            "type": "text",
+                                            "label": "String"
+                                        }
+                                    ],
+                                    "type": "collection",
+                                    "label": "Row Total"
+                                },
+                                {
+                                    "name": "productName",
+                                    "type": "text",
+                                    "label": "Product Name"
+                                },
+                                {
+                                    "name": "productSlug",
+                                    "type": "text",
+                                    "label": "Product Slug"
+                                },
+                                {
+                                    "name": "variantName",
+                                    "type": "text",
+                                    "label": "Variant Name"
+                                },
+                                {
+                                    "name": "variantSlug",
+                                    "type": "text",
+                                    "label": "Variant Slug"
+                                },
+                                {
+                                    "name": "variantSKU",
+                                    "type": "text",
+                                    "label": "Variant SKU"
+                                },
+                                {
+                                    "name": "variantImage",
+                                    "spec": [
+                                        {
+                                            "name": "fileId",
+                                            "type": "text",
+                                            "label": "File ID"
+                                        },
+                                        {
+                                            "name": "file",
+                                            "spec": [
+                                                {
+                                                    "name": "size",
+                                                    "type": "number",
+                                                    "label": "Size"
+                                                },
+                                                {
+                                                    "name": "width",
+                                                    "type": "number",
+                                                    "label": "Width"
+                                                },
+                                                {
+                                                    "name": "height",
+                                                    "type": "number",
+                                                    "label": "Height"
+                                                },
+                                                {
+                                                    "name": "fileName",
+                                                    "type": "text",
+                                                    "label": "File Name"
+                                                },
+                                                {
+                                                    "name": "createdOn",
+                                                    "type": "date",
+                                                    "label": "Created On"
+                                                },
+                                                {
+                                                    "name": "origFileName",
+                                                    "type": "text",
+                                                    "label": "Original File Name"
+                                                },
+                                                {
+                                                    "name": "fileHash",
+                                                    "type": "text",
+                                                    "label": "File Hash"
+                                                },
+                                                {
+                                                    "name": "mimeType",
+                                                    "type": "text",
+                                                    "label": "Mime Type"
+                                                },
+                                                {
+                                                    "name": "s3Url",
+                                                    "type": "text",
+                                                    "label": "S3 URL"
+                                                },
+                                                {
+                                                    "name": "__v",
+                                                    "type": "number"
+                                                },
+                                                {
+                                                    "name": "_id",
+                                                    "type": "text",
+                                                    "label": "_ID"
+                                                },
+                                                {
+                                                    "name": "database",
+                                                    "type": "text",
+                                                    "label": "Database"
+                                                }
+                                            ],
+                                            "type": "collection",
+                                            "label": "File"
+                                        },
+                                        {
+                                            "name": "fileSize",
+                                            "type": "number",
+                                            "label": "File Size"
+                                        },
+                                        {
+                                            "name": "url",
+                                            "type": "text",
+                                            "label": "URL"
+                                        },
+                                        {
+                                            "name": "alt",
+                                            "type": "text",
+                                            "label": "Alt"
+                                        },
+                                        {
+                                            "name": "tmp",
+                                            "type": "text",
+                                            "label": "Tmp"
+                                        }
+                                    ],
+                                    "type": "collection",
+                                    "label": "Variant Image"
+                                },
+                                {
+                                    "name": "variantPrice",
+                                    "spec": [
+                                        {
+                                            "name": "unit",
+                                            "type": "text",
+                                            "label": "Unit"
+                                        },
+                                        {
+                                            "name": "value",
+                                            "type": "number",
+                                            "label": "Value"
+                                        },
+                                        {
+                                            "name": "string",
+                                            "type": "text",
+                                            "label": "String"
+                                        }
+                                    ],
+                                    "type": "collection",
+                                    "label": "Variant Price"
+                                },
+                                {
+                                    "name": "weight",
+                                    "type": "number",
+                                    "label": "Weight"
+                                },
+                                {
+                                    "name": "height",
+                                    "type": "number",
+                                    "label": "Height"
+                                },
+                                {
+                                    "name": "width",
+                                    "type": "number",
+                                    "label": "Width"
+                                },
+                                {
+                                    "name": "length",
+                                    "type": "number",
+                                    "label": "Length"
+                                }
+                            ],
+                            "type": "collection"
+                        },
+                        "type": "array",
+                        "label": "Purchased Items"
+                    },
+                    {
+                        "name": "purchasedItemsCount",
+                        "type": "number",
+                        "label": "Purchased Items Count"
+                    },
+                    {
+                        "name": "stripeDetails",
+                        "spec": [
+                            {
+                                "name": "customerId",
+                                "type": "text",
+                                "label": "Customer ID"
+                            },
+                            {
+                                "name": "chargeId",
+                                "type": "text",
+                                "label": "Charge ID"
+                            },
+                            {
+                                "name": "disputeId",
+                                "type": "text",
+                                "label": "Dispute ID"
+                            },
+                            {
+                                "name": "paymentIntentId",
+                                "type": "text",
+                                "label": "Payment Intent ID"
+                            },
+                            {
+                                "name": "paymentMethod",
+                                "type": "text",
+                                "label": "Payment Method"
+                            },
+                            {
+                                "name": "refundId",
+                                "type": "text",
+                                "label": "Refund ID"
+                            },
+                            {
+                                "name": "refundReason",
+                                "type": "text",
+                                "label": "Refund Reason"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Stripe Details"
+                    },
+                    {
+                        "name": "stripeCard",
+                        "spec": [
+                            {
+                                "name": "last4",
+                                "type": "text",
+                                "label": "Last 4"
+                            },
+                            {
+                                "name": "brand",
+                                "type": "text",
+                                "label": "Brand"
+                            },
+                            {
+                                "name": "ownerName",
+                                "type": "text",
+                                "label": "Owner Name"
+                            },
+                            {
+                                "name": "expires",
+                                "spec": [
+                                    {
+                                        "name": "month",
+                                        "type": "number",
+                                        "label": "Month"
+                                    },
+                                    {
+                                        "name": "year",
+                                        "type": "number",
+                                        "label": "Year"
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "Expires"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Stripe Card"
+                    },
+                    {
+                        "name": "customData",
+                        "spec": {
+                            "spec": [
+                                {
+                                    "name": "name",
+                                    "type": "text",
+                                    "label": "Name"
+                                },
+                                {
+                                    "name": "checkbox",
+                                    "type": "boolean",
+                                    "label": "Checkbox"
+                                }
+                            ],
+                            "type": "collection"
+                        },
+                        "type": "array",
+                        "label": "Custom Data"
+                    },
+                    {
+                        "name": "paypalDetails",
+                        "type": "text",
+                        "label": "Paypal Details"
+                    },
+                    {
+                        "name": "applicationFee",
+                        "spec": [
+                            {
+                                "name": "value",
+                                "type": "number",
+                                "label": "Value"
+                            },
+                            {
+                                "name": "unit",
+                                "type": "text",
+                                "label": "Unit"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Application Fee"
+                    },
+                    {
+                        "name": "paymentProcessor",
+                        "type": "text",
+                        "label": "Payment Processor"
+                    },
+                    {
+                        "name": "shippingAddress",
+                        "spec": [
+                            {
+                                "name": "type",
+                                "type": "text",
+                                "label": "Type"
+                            },
+                            {
+                                "name": "addressee",
+                                "type": "text",
+                                "label": "Addressee"
+                            },
+                            {
+                                "name": "line1",
+                                "type": "text",
+                                "label": "Line 1"
+                            },
+                            {
+                                "name": "line2",
+                                "type": "text",
+                                "label": "Line 2"
+                            },
+                            {
+                                "name": "city",
+                                "type": "text",
+                                "label": "City"
+                            },
+                            {
+                                "name": "state",
+                                "type": "text",
+                                "label": "State"
+                            },
+                            {
+                                "name": "country",
+                                "type": "text",
+                                "label": "Country"
+                            },
+                            {
+                                "name": "postalCode",
+                                "type": "text",
+                                "label": "Postal Code"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Shipping Address"
+                    },
+                    {
+                        "name": "billingAddress",
+                        "spec": [
+                            {
+                                "name": "type",
+                                "type": "text",
+                                "label": "Type"
+                            },
+                            {
+                                "name": "addressee",
+                                "type": "text",
+                                "label": "Addressee"
+                            },
+                            {
+                                "name": "line1",
+                                "type": "text",
+                                "label": "Line 1"
+                            },
+                            {
+                                "name": "line2",
+                                "type": "text",
+                                "label": "Line 2"
+                            },
+                            {
+                                "name": "city",
+                                "type": "text",
+                                "label": "City"
+                            },
+                            {
+                                "name": "state",
+                                "type": "text",
+                                "label": "State"
+                            },
+                            {
+                                "name": "country",
+                                "type": "text",
+                                "label": "Country"
+                            },
+                            {
+                                "name": "postalCode",
+                                "type": "text",
+                                "label": "Postal Code"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Billing Address"
+                    },
+                    {
+                        "name": "totals",
+                        "spec": [
+                            {
+                                "name": "subtotal",
+                                "spec": [
+                                    {
+                                        "name": "unit",
+                                        "type": "text",
+                                        "label": "Unit"
+                                    },
+                                    {
+                                        "name": "value",
+                                        "type": "number",
+                                        "label": "Value"
+                                    },
+                                    {
+                                        "name": "string",
+                                        "type": "text",
+                                        "label": "String"
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "Subtotal"
+                            },
+                            {
+                                "name": "extras",
+                                "spec": {
+                                    "spec": [
+                                        {
+                                            "name": "type",
+                                            "type": "text",
+                                            "label": "Type"
+                                        },
+                                        {
+                                            "name": "name",
+                                            "type": "text",
+                                            "label": "Name"
+                                        },
+                                        {
+                                            "name": "description",
+                                            "type": "text",
+                                            "label": "Description"
+                                        },
+                                        {
+                                            "name": "price",
+                                            "spec": [
+                                                {
+                                                    "name": "unit",
+                                                    "type": "text",
+                                                    "label": "Unit"
+                                                },
+                                                {
+                                                    "name": "value",
+                                                    "type": "number",
+                                                    "label": "Value"
+                                                },
+                                                {
+                                                    "name": "string",
+                                                    "type": "text",
+                                                    "label": "String"
+                                                }
+                                            ],
+                                            "type": "collection",
+                                            "label": "Price"
+                                        }
+                                    ],
+                                    "type": "collection"
+                                },
+                                "type": "array",
+                                "label": "Extras"
+                            },
+                            {
+                                "name": "total",
+                                "spec": [
+                                    {
+                                        "name": "unit",
+                                        "type": "text",
+                                        "label": "Unit"
+                                    },
+                                    {
+                                        "name": "value",
+                                        "type": "number",
+                                        "label": "Value"
+                                    },
+                                    {
+                                        "name": "string",
+                                        "type": "text",
+                                        "label": "String"
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "Total"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Totals"
+                    },
+                    {
+                        "name": "requiresShipping",
+                        "type": "boolean",
+                        "label": "Requires Shipping"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 2,
+            "module": "builtin:BasicFeeder",
+            "version": 1,
+            "parameters": {},
+            "mapper": {
+                "array": "{{1.purchasedItems}}"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 300,
+                    "y": 0
+                },
+                "restore": {
+                    "expect": {
+                        "array": {
+                            "mode": "edit"
+                        }
+                    }
+                },
+                "expect": [
+                    {
+                        "mode": "edit",
+                        "name": "array",
+                        "spec": [],
+                        "type": "array",
+                        "label": "Array"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 5,
+            "module": "webflow:getAProduct",
+            "version": 1,
+            "parameters": {
+                "__IMTCONN__": 161440
+            },
+            "mapper": {
+                "site_id": "63d842ee28d89a29c36eb8d7",
+                "product_id": "{{2.productId}}"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 600,
+                    "y": 0,
+                    "name": "Get product details"
+                },
+                "restore": {
+                    "expect": {
+                        "site_id": {
+                            "mode": "chose",
+                            "label": "Breakneck Comedy"
+                        },
+                        "product_id": {
+                            "mode": "edit"
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "webflow"
+                            },
+                            "label": "My Webflow connection (Make)"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:webflow",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "mode": "edit",
+                        "name": "site_id",
+                        "type": "select",
+                        "label": "Site",
+                        "required": true
+                    },
+                    {
+                        "name": "product_id",
+                        "type": "select",
+                        "label": "Product",
+                        "required": true
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "updated-by",
+                        "type": "text",
+                        "label": "Updated By"
+                    },
+                    {
+                        "name": "created-by",
+                        "type": "text",
+                        "label": "Created By"
+                    },
+                    {
+                        "name": "published-by",
+                        "type": "text",
+                        "label": "Published By"
+                    },
+                    {
+                        "name": "_cid",
+                        "type": "text",
+                        "label": "Collection ID"
+                    },
+                    {
+                        "name": "_id",
+                        "type": "text",
+                        "label": "Product ID"
+                    },
+                    {
+                        "name": "sku-properties",
+                        "spec": [
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "ID"
+                            },
+                            {
+                                "name": "name",
+                                "type": "text",
+                                "label": "Name"
+                            },
+                            {
+                                "name": "enum",
+                                "spec": [
+                                    {
+                                        "name": "id",
+                                        "type": "text",
+                                        "label": "ID"
+                                    },
+                                    {
+                                        "name": "name",
+                                        "type": "text",
+                                        "label": "Name"
+                                    },
+                                    {
+                                        "name": "slug",
+                                        "type": "text",
+                                        "label": "Slug"
+                                    }
+                                ],
+                                "type": "array",
+                                "label": "Options"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "SKU Properties",
+                        "required": false
+                    },
+                    {
+                        "name": "category",
+                        "type": "select",
+                        "label": "Categories",
+                        "options": "rpc://listCategories?collectionId=63ef74b5f1e5b8515e54abf8",
+                        "multiple": true,
+                        "required": false
+                    },
+                    {
+                        "name": "description",
+                        "type": "text",
+                        "label": "Description",
+                        "required": false
+                    },
+                    {
+                        "name": "shippable",
+                        "type": "boolean",
+                        "label": "Requires Shipping",
+                        "required": false
+                    },
+                    {
+                        "help": "This value needs to match one of the values specified in TaxCategories",
+                        "name": "tax-category",
+                        "type": "text",
+                        "label": "Tax Category",
+                        "required": false
+                    },
+                    {
+                        "help": "This field is an ID of Item reference.",
+                        "name": "default-sku",
+                        "type": "text",
+                        "label": "Default SKU",
+                        "required": false
+                    },
+                    {
+                        "name": "ec-product-type",
+                        "type": "select",
+                        "label": "Product type",
+                        "options": [
+                            {
+                                "label": "Physical",
+                                "value": "ff42fee0113744f693a764e3431a9cc2"
+                            },
+                            {
+                                "label": "Digital",
+                                "value": "f22027db68002190aef89a4a2b7ac8a1"
+                            },
+                            {
+                                "label": "Service",
+                                "value": "c599e43b1a1c34d5a323aedf75d3adf6"
+                            },
+                            {
+                                "label": "Membership",
+                                "value": "e348fd487d0102946c9179d2a94bb613"
+                            },
+                            {
+                                "label": "Advanced",
+                                "value": "b6ccc1830db4b1babeb06a9ac5f6dd76"
+                            }
+                        ],
+                        "required": false
+                    },
+                    {
+                        "name": "is-an-event",
+                        "type": "boolean",
+                        "label": "Is an Event",
+                        "required": false
+                    },
+                    {
+                        "name": "extra-show-information-test",
+                        "type": "text",
+                        "label": "Extra Show/Event/Product Information",
+                        "required": false,
+                        "multiline": true
+                    },
+                    {
+                        "help": "This field is an ID of Item reference.",
+                        "name": "main-act",
+                        "type": "text",
+                        "label": "Main Act",
+                        "required": false
+                    },
+                    {
+                        "name": "supporting-act",
+                        "type": "select",
+                        "label": "Supporting Act",
+                        "options": "rpc://listCategories?collectionId=63ef74b5f1e5b8893554abfb",
+                        "multiple": true,
+                        "required": false
+                    },
+                    {
+                        "name": "no-specific-acts-named",
+                        "type": "boolean",
+                        "label": "No specific acts named",
+                        "required": false
+                    },
+                    {
+                        "name": "show-poster",
+                        "spec": [
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            },
+                            {
+                                "name": "id",
+                                "type": "text",
+                                "label": "File ID"
+                            },
+                            {
+                                "name": "name",
+                                "type": "text",
+                                "label": "Name"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Show Poster",
+                        "required": false
+                    },
+                    {
+                        "help": "This field is an ID of Item reference.",
+                        "name": "venue-3",
+                        "type": "text",
+                        "label": "Venue",
+                        "required": false
+                    },
+                    {
+                        "help": "This field is an ID of Item reference.",
+                        "name": "location-3",
+                        "type": "text",
+                        "label": "Location",
+                        "required": false
+                    },
+                    {
+                        "name": "doors-open",
+                        "time": false,
+                        "type": "date",
+                        "label": "Doors Open",
+                        "required": false
+                    },
+                    {
+                        "name": "show-starts",
+                        "time": false,
+                        "type": "date",
+                        "label": "Show Starts",
+                        "required": false
+                    },
+                    {
+                        "name": "show-ends",
+                        "time": false,
+                        "type": "date",
+                        "label": "Show Ends",
+                        "required": false
+                    },
+                    {
+                        "name": "featured-show",
+                        "type": "boolean",
+                        "label": "Featured Show",
+                        "required": false
+                    },
+                    {
+                        "name": "limited-tickets",
+                        "type": "boolean",
+                        "label": "Limited Tickets",
+                        "required": false
+                    },
+                    {
+                        "name": "show-sponsors-2",
+                        "type": "select",
+                        "label": "Show Sponsors",
+                        "options": "rpc://listCategories?collectionId=63f28df7cdf34e0491b40a2d",
+                        "multiple": true,
+                        "required": false
+                    },
+                    {
+                        "name": "name",
+                        "type": "text",
+                        "label": "Name",
+                        "required": true,
+                        "validate": {
+                            "max": 256
+                        }
+                    },
+                    {
+                        "help": "Must be alphanumerical and not contain any spaces or special characters",
+                        "name": "slug",
+                        "type": "text",
+                        "label": "Slug",
+                        "required": false,
+                        "validate": {
+                            "max": 256
+                        }
+                    },
+                    {
+                        "name": "_archived",
+                        "type": "boolean",
+                        "label": "Archived",
+                        "default": false,
+                        "required": true
+                    },
+                    {
+                        "name": "_draft",
+                        "type": "boolean",
+                        "label": "Draft",
+                        "default": false,
+                        "required": true
+                    },
+                    {
+                        "name": "created-on",
+                        "time": false,
+                        "type": "date",
+                        "label": "Created On",
+                        "required": false
+                    },
+                    {
+                        "name": "updated-on",
+                        "time": false,
+                        "type": "date",
+                        "label": "Updated On",
+                        "required": false
+                    },
+                    {
+                        "name": "published-on",
+                        "time": false,
+                        "type": "date",
+                        "label": "Published On",
+                        "required": false
+                    },
+                    {
+                        "name": "skus",
+                        "spec": [
+                            {
+                                "name": "sku-values",
+                                "spec": [],
+                                "type": "collection",
+                                "label": "SKU Values",
+                                "required": true
+                            },
+                            {
+                                "help": "This field is an ID of Item reference.",
+                                "name": "product",
+                                "type": "text",
+                                "label": "Product",
+                                "required": true
+                            },
+                            {
+                                "name": "main-image",
+                                "spec": [
+                                    {
+                                        "name": "url",
+                                        "type": "url",
+                                        "label": "URL"
+                                    },
+                                    {
+                                        "name": "id",
+                                        "type": "text",
+                                        "label": "File ID"
+                                    },
+                                    {
+                                        "name": "name",
+                                        "type": "text",
+                                        "label": "Name"
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "Main Image",
+                                "required": false
+                            },
+                            {
+                                "name": "more-images",
+                                "spec": [
+                                    {
+                                        "name": "url",
+                                        "type": "url",
+                                        "label": "URL"
+                                    },
+                                    {
+                                        "name": "id",
+                                        "type": "text",
+                                        "label": "File ID"
+                                    },
+                                    {
+                                        "name": "name",
+                                        "type": "text",
+                                        "label": "Name"
+                                    }
+                                ],
+                                "type": "array",
+                                "label": "More Images",
+                                "required": false
+                            },
+                            {
+                                "name": "price",
+                                "spec": [
+                                    {
+                                        "help": "Click [here](https://www.sport-histoire.fr/en/Geography/Currencies_countries_of_the_world.php) to enter currency ISO code.",
+                                        "name": "unit",
+                                        "type": "text",
+                                        "label": "Currency Unit",
+                                        "required": true,
+                                        "validate": {
+                                            "max": 3
+                                        }
+                                    },
+                                    {
+                                        "name": "value",
+                                        "type": "number",
+                                        "label": "Price Value",
+                                        "required": true
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "Price",
+                                "required": true
+                            },
+                            {
+                                "name": "compare-at-price",
+                                "spec": [
+                                    {
+                                        "help": "Click [here](https://www.sport-histoire.fr/en/Geography/Currencies_countries_of_the_world.php) to enter currency ISO code.",
+                                        "name": "unit",
+                                        "type": "text",
+                                        "label": "Currency Unit",
+                                        "required": false,
+                                        "validate": {
+                                            "max": 3
+                                        }
+                                    },
+                                    {
+                                        "name": "value",
+                                        "type": "number",
+                                        "label": "Price Value",
+                                        "required": false
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "Compare-at price",
+                                "required": false
+                            },
+                            {
+                                "name": "download-files",
+                                "spec": [
+                                    {
+                                        "name": "url",
+                                        "type": "url",
+                                        "label": "URL"
+                                    },
+                                    {
+                                        "name": "id",
+                                        "type": "text",
+                                        "label": "File ID"
+                                    },
+                                    {
+                                        "name": "name",
+                                        "type": "text",
+                                        "label": "Name"
+                                    }
+                                ],
+                                "type": "array",
+                                "label": "Downloads",
+                                "required": false
+                            },
+                            {
+                                "name": "width",
+                                "type": "number",
+                                "label": "Width",
+                                "required": false
+                            },
+                            {
+                                "name": "length",
+                                "type": "number",
+                                "label": "Length",
+                                "required": false
+                            },
+                            {
+                                "name": "height",
+                                "type": "number",
+                                "label": "Height",
+                                "required": false
+                            },
+                            {
+                                "name": "weight",
+                                "type": "number",
+                                "label": "Weight",
+                                "required": false
+                            },
+                            {
+                                "name": "sku",
+                                "type": "text",
+                                "label": "SKU",
+                                "required": false
+                            },
+                            {
+                                "help": "This value needs to match one of the values specified in BillingMethods",
+                                "name": "ec-sku-billing-method",
+                                "type": "text",
+                                "label": "Billing method",
+                                "required": false
+                            },
+                            {
+                                "name": "name",
+                                "type": "text",
+                                "label": "Name",
+                                "required": true,
+                                "validate": {
+                                    "max": 256
+                                }
+                            },
+                            {
+                                "help": "Must be alphanumerical and not contain any spaces or special characters",
+                                "name": "slug",
+                                "type": "text",
+                                "label": "Slug",
+                                "required": false,
+                                "validate": {
+                                    "max": 256
+                                }
+                            },
+                            {
+                                "name": "_archived",
+                                "type": "boolean",
+                                "label": "Archived",
+                                "default": false,
+                                "required": true
+                            },
+                            {
+                                "name": "_draft",
+                                "type": "boolean",
+                                "label": "Draft",
+                                "default": false,
+                                "required": true
+                            },
+                            {
+                                "name": "created-on",
+                                "time": false,
+                                "type": "date",
+                                "label": "Created On",
+                                "required": false
+                            },
+                            {
+                                "name": "updated-on",
+                                "time": false,
+                                "type": "date",
+                                "label": "Updated On",
+                                "required": false
+                            },
+                            {
+                                "name": "published-on",
+                                "time": false,
+                                "type": "date",
+                                "label": "Published On",
+                                "required": false
+                            },
+                            {
+                                "name": "updated-by",
+                                "type": "text",
+                                "label": "Updated By"
+                            },
+                            {
+                                "name": "created-by",
+                                "type": "text",
+                                "label": "Created By"
+                            },
+                            {
+                                "name": "published-by",
+                                "type": "text",
+                                "label": "Published By"
+                            },
+                            {
+                                "name": "_cid",
+                                "type": "text",
+                                "label": "Collection ID"
+                            },
+                            {
+                                "name": "_id",
+                                "type": "text",
+                                "label": "SKU ID"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "SKUs"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 3,
+            "module": "google-sheets:addRow",
+            "version": 2,
+            "parameters": {
+                "__IMTCONN__": 161479
+            },
+            "filter": {
+                "name": "If product is not a ticket",
+                "conditions": [
+                    [
+                        {
+                            "a": "{{5.`is-an-event`}}",
+                            "b": "false",
+                            "o": "boolean:equal"
+                        }
+                    ]
+                ]
+            },
+            "mapper": {
+                "from": "drive",
+                "mode": "select",
+                "values": {
+                    "0": "{{2.productName}}",
+                    "1": "{{2.variantName}}",
+                    "2": "{{2.count}}",
+                    "3": "{{1.customerInfo.fullName}}",
+                    "4": "{{1.customerInfo.email}}",
+                    "5": "{{1.orderId}}",
+                    "6": "Managed by Webfow",
+                    "7": "{{formatDate(1.acceptedOn; \"DD/MM/YYYY hh:mm a\")}}"
+                },
+                "sheetId": "Merchandise Sales Report",
+                "spreadsheetId": "/1MNwRoaRvTFY4xxHgIeI7G8zO0C5aHqOeHCIz0Goms3k",
+                "includesHeaders": true,
+                "insertDataOption": "INSERT_ROWS",
+                "valueInputOption": "USER_ENTERED",
+                "insertUnformatted": false
+            },
+            "metadata": {
+                "designer": {
+                    "x": 900,
+                    "y": 0,
+                    "name": "Update product data on merchandise sheet"
+                },
+                "restore": {
+                    "expect": {
+                        "from": {
+                            "label": "My Drive"
+                        },
+                        "mode": {
+                            "label": "Select by path"
+                        },
+                        "sheetId": {
+                            "label": "Merchandise Sales Report"
+                        },
+                        "spreadsheetId": {
+                            "path": [
+                                "Breakneck Comedy Order Confirmation"
+                            ]
+                        },
+                        "includesHeaders": {
+                            "label": "Yes",
+                            "nested": [
+                                {
+                                    "name": "values",
+                                    "spec": [
+                                        {
+                                            "name": "0",
+                                            "type": "text",
+                                            "label": "Item (A)"
+                                        },
+                                        {
+                                            "name": "1",
+                                            "type": "text",
+                                            "label": "Variant (B)"
+                                        },
+                                        {
+                                            "name": "2",
+                                            "type": "text",
+                                            "label": "Quantity (C)"
+                                        },
+                                        {
+                                            "name": "3",
+                                            "type": "text",
+                                            "label": "Name (D)"
+                                        },
+                                        {
+                                            "name": "4",
+                                            "type": "text",
+                                            "label": "Email (E)"
+                                        },
+                                        {
+                                            "name": "5",
+                                            "type": "text",
+                                            "label": "Order ID (F)"
+                                        },
+                                        {
+                                            "name": "6",
+                                            "type": "text",
+                                            "label": "Email Sent (G)"
+                                        },
+                                        {
+                                            "name": "7",
+                                            "type": "text",
+                                            "label": "Email Sent (Date, time) (H)"
+                                        },
+                                        {
+                                            "name": "8",
+                                            "type": "text",
+                                            "label": "(I)"
+                                        },
+                                        {
+                                            "name": "9",
+                                            "type": "text",
+                                            "label": "(J)"
+                                        },
+                                        {
+                                            "name": "10",
+                                            "type": "text",
+                                            "label": "(K)"
+                                        },
+                                        {
+                                            "name": "11",
+                                            "type": "text",
+                                            "label": "(L)"
+                                        },
+                                        {
+                                            "name": "12",
+                                            "type": "text",
+                                            "label": "(M)"
+                                        },
+                                        {
+                                            "name": "13",
+                                            "type": "text",
+                                            "label": "(N)"
+                                        },
+                                        {
+                                            "name": "14",
+                                            "type": "text",
+                                            "label": "(O)"
+                                        },
+                                        {
+                                            "name": "15",
+                                            "type": "text",
+                                            "label": "(P)"
+                                        },
+                                        {
+                                            "name": "16",
+                                            "type": "text",
+                                            "label": "(Q)"
+                                        },
+                                        {
+                                            "name": "17",
+                                            "type": "text",
+                                            "label": "(R)"
+                                        },
+                                        {
+                                            "name": "18",
+                                            "type": "text",
+                                            "label": "(S)"
+                                        },
+                                        {
+                                            "name": "19",
+                                            "type": "text",
+                                            "label": "(T)"
+                                        },
+                                        {
+                                            "name": "20",
+                                            "type": "text",
+                                            "label": "(U)"
+                                        },
+                                        {
+                                            "name": "21",
+                                            "type": "text",
+                                            "label": "(V)"
+                                        },
+                                        {
+                                            "name": "22",
+                                            "type": "text",
+                                            "label": "(W)"
+                                        },
+                                        {
+                                            "name": "23",
+                                            "type": "text",
+                                            "label": "(X)"
+                                        },
+                                        {
+                                            "name": "24",
+                                            "type": "text",
+                                            "label": "(Y)"
+                                        },
+                                        {
+                                            "name": "25",
+                                            "type": "text",
+                                            "label": "(Z)"
+                                        },
+                                        {
+                                            "name": "26",
+                                            "type": "text",
+                                            "label": "(AA)"
+                                        },
+                                        {
+                                            "name": "27",
+                                            "type": "text",
+                                            "label": "(AB)"
+                                        },
+                                        {
+                                            "name": "28",
+                                            "type": "text",
+                                            "label": "(AC)"
+                                        }
+                                    ],
+                                    "type": "collection",
+                                    "label": "Values"
+                                }
+                            ]
+                        },
+                        "insertDataOption": {
+                            "mode": "chose",
+                            "label": "Insert rows"
+                        },
+                        "valueInputOption": {
+                            "mode": "chose",
+                            "label": "User entered"
+                        },
+                        "insertUnformatted": {
+                            "mode": "chose"
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "google"
+                            },
+                            "label": "My Google connection (james.watson@fiftyfifty.design)"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:google",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "mode",
+                        "type": "select",
+                        "label": "Choose a Method",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "select",
+                                "fromAll",
+                                "map"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "insertUnformatted",
+                        "type": "boolean",
+                        "label": "Unformatted",
+                        "required": true
+                    },
+                    {
+                        "name": "valueInputOption",
+                        "type": "select",
+                        "label": "Value input option",
+                        "validate": {
+                            "enum": [
+                                "USER_ENTERED",
+                                "RAW"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "insertDataOption",
+                        "type": "select",
+                        "label": "Insert data option",
+                        "validate": {
+                            "enum": [
+                                "INSERT_ROWS",
+                                "OVERWRITE"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "from",
+                        "type": "select",
+                        "label": "Choose a Drive",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "drive",
+                                "share",
+                                "team"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "spreadsheetId",
+                        "type": "file",
+                        "label": "Spreadsheet ID",
+                        "required": true
+                    },
+                    {
+                        "name": "sheetId",
+                        "type": "select",
+                        "label": "Sheet Name",
+                        "required": true
+                    },
+                    {
+                        "name": "includesHeaders",
+                        "type": "select",
+                        "label": "Table contains headers",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                true,
+                                false
+                            ]
+                        }
+                    },
+                    {
+                        "name": "values",
+                        "spec": [
+                            {
+                                "name": "0",
+                                "type": "text",
+                                "label": "Item (A)"
+                            },
+                            {
+                                "name": "1",
+                                "type": "text",
+                                "label": "Variant (B)"
+                            },
+                            {
+                                "name": "2",
+                                "type": "text",
+                                "label": "Quantity (C)"
+                            },
+                            {
+                                "name": "3",
+                                "type": "text",
+                                "label": "Name (D)"
+                            },
+                            {
+                                "name": "4",
+                                "type": "text",
+                                "label": "Email (E)"
+                            },
+                            {
+                                "name": "5",
+                                "type": "text",
+                                "label": "Order ID (F)"
+                            },
+                            {
+                                "name": "6",
+                                "type": "text",
+                                "label": "Email Sent (G)"
+                            },
+                            {
+                                "name": "7",
+                                "type": "text",
+                                "label": "Email Sent (Date, time) (H)"
+                            },
+                            {
+                                "name": "8",
+                                "type": "text",
+                                "label": "(I)"
+                            },
+                            {
+                                "name": "9",
+                                "type": "text",
+                                "label": "(J)"
+                            },
+                            {
+                                "name": "10",
+                                "type": "text",
+                                "label": "(K)"
+                            },
+                            {
+                                "name": "11",
+                                "type": "text",
+                                "label": "(L)"
+                            },
+                            {
+                                "name": "12",
+                                "type": "text",
+                                "label": "(M)"
+                            },
+                            {
+                                "name": "13",
+                                "type": "text",
+                                "label": "(N)"
+                            },
+                            {
+                                "name": "14",
+                                "type": "text",
+                                "label": "(O)"
+                            },
+                            {
+                                "name": "15",
+                                "type": "text",
+                                "label": "(P)"
+                            },
+                            {
+                                "name": "16",
+                                "type": "text",
+                                "label": "(Q)"
+                            },
+                            {
+                                "name": "17",
+                                "type": "text",
+                                "label": "(R)"
+                            },
+                            {
+                                "name": "18",
+                                "type": "text",
+                                "label": "(S)"
+                            },
+                            {
+                                "name": "19",
+                                "type": "text",
+                                "label": "(T)"
+                            },
+                            {
+                                "name": "20",
+                                "type": "text",
+                                "label": "(U)"
+                            },
+                            {
+                                "name": "21",
+                                "type": "text",
+                                "label": "(V)"
+                            },
+                            {
+                                "name": "22",
+                                "type": "text",
+                                "label": "(W)"
+                            },
+                            {
+                                "name": "23",
+                                "type": "text",
+                                "label": "(X)"
+                            },
+                            {
+                                "name": "24",
+                                "type": "text",
+                                "label": "(Y)"
+                            },
+                            {
+                                "name": "25",
+                                "type": "text",
+                                "label": "(Z)"
+                            },
+                            {
+                                "name": "26",
+                                "type": "text",
+                                "label": "(AA)"
+                            },
+                            {
+                                "name": "27",
+                                "type": "text",
+                                "label": "(AB)"
+                            },
+                            {
+                                "name": "28",
+                                "type": "text",
+                                "label": "(AC)"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Values"
+                    }
+                ]
+            }
+        }
+    ],
+    "metadata": {
+        "instant": true,
+        "version": 1,
+        "scenario": {
+            "roundtrips": 1,
+            "maxErrors": 3,
+            "autoCommit": true,
+            "autoCommitTriggerLast": true,
+            "sequential": false,
+            "confidential": false,
+            "dataloss": false,
+            "dlq": false,
+            "freshVariables": false
+        },
+        "designer": {
+            "orphans": []
+        },
+        "zone": "eu2.make.com"
+    }
+}
